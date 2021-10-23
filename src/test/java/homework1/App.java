@@ -6,9 +6,9 @@ public class App {
         for (int i = 0; i < members.length; i++) {          //добавляем в него 10 участников
             members[i] = new Members();
         }
-        Team team = new Team("Unbeatable",members);
+        Team team = new Team("Unbeatable",members);     //создаём команду
         Course c = new Course();
-        c.dolt(team,members);
+        c.dolt(team,members);                     //тк в команде я установил флаг на прохождение то передаю команду и ее участников
         team.showResults();
 
     }

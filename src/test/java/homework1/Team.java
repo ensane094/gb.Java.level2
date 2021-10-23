@@ -2,9 +2,10 @@ package homework1;
 
 public class Team {
     private String name;
-    private Members [] members;
-    private boolean passed = false;
-    public Team (String name, Members ...members){
+    private Members[] members;
+    private boolean passed = false;                 //флаг прохождения курса
+
+    public Team(String name, Members... members) {          //передаём название комманды и массив участников
         this.name = name;
         this.members = members;
     }
@@ -21,11 +22,11 @@ public class Team {
         return name;
     }
 
-    public void showResults(){
-        if (passed == true){
-            System.out.println("Комманда прошла испытание");
-        }else {
-            System.out.println("Комманда не прошла испытание");
+    public void showResults() {
+        if (passed == true) {
+            System.out.println("Комманда " + getName() + "прошла испытание");
+        } else {
+            System.out.println("Комманда " + getName() + " не прошла испытание");
         }
     }
 }
