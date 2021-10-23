@@ -8,7 +8,7 @@ public class App {
         }
         Team team = new Team("Unbeatable",members);     //создаём команду
         Course c = new Course();
-        c.dolt(team,members);                     //тк в команде я установил флаг на прохождение то передаю команду и ее участников
+        c.dolt(team);                     //тк в команде я установил флаг на прохождение то передаю команду и ее участников
         team.showResults();
 
     }
