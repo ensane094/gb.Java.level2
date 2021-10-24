@@ -1,5 +1,4 @@
-package homework1;
+package manualLesson1;
 
 public interface Members {
-
 }
