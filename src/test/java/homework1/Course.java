@@ -4,11 +4,19 @@ public class Course {
 
 
     public void dolt (Barrier []barrier,Team team){
+        int passedCount =0;
+        boolean isPassed = false;
         for (int i = 0; i <team.getMembers().length ; i++) {
+            isPassed = false;
             for (int j = 0; j < barrier.length; j++) {
-              barrier[j].overcome(team.getMembers()[i]);
+              if(barrier[j].overcome(team.getMembers()[i])){
+                 isPassed = true;
+              }
             }
-            team.setPassedMembers(i+1);
+            if (isPassed == true){
+                passedCount ++;
+            }
+            team.setPassedMembers(passedCount);
         }
     }
 }
