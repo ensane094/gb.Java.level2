@@ -1,32 +1,33 @@
 package homework1;
 
-public class Team {
+public class Team implements Members{
     private String name;
-    protected Members[] members;
-    private boolean passed = false;                         //флаг прохождения курса
+    private Members[] members;
+    private int passedMembers;
 
-    public Team(String name, Members... members) {          //передаём название комманды и массив участников
+    public Team(String name, Members... members) {
         this.name = name;
         this.members = members;
     }
 
-    public void setPassed(boolean passed) {
-        this.passed = passed;
-    }
-
-    public boolean isPassed() {
-        return passed;
-    }
 
     public String getName() {
         return name;
     }
 
     public void showResults() {
-        if (passed == true) {
-            System.out.println("Комманда " + getName() + " прошла испытание");
-        } else {
-            System.out.println("Комманда " + getName() + " не прошла испытание");
-        }
+        System.out.println(getPassedMembers()+" участников команды "+getName()+" прошли курс");
+    }
+
+    public int getPassedMembers() {
+        return passedMembers;
+    }
+
+    public void setPassedMembers(int passedMembers) {
+        this.passedMembers = passedMembers;
+    }
+
+    public Members[] getMembers() {
+        return members;
     }
 }
