@@ -1,43 +1,34 @@
 package homework2;
 
-import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) {
         String[][] strings = new String[4][4];
 
-
-        if (!arrayCheck(strings)) {                             //Если длинна массива не верна то инициализируем исключение
-            try {
-                throw new MyArraySizeException();
-            } catch (MyArraySizeException e) {
-                System.out.println("Некорректная длинна массива");
-            }
-        }
-
-
         for (int i = 0; i < strings.length; i++) {              // заполняем массив
             for (int j = 0; j < strings[i].length; j++) {
-                strings[i][j] = j + "";
+                strings[i][j] = j+"1";
             }
         }
-        sum(strings);
+
+        System.out.println(sum(strings));
     }
 
 
-    static boolean arrayCheck(String[][] strings) {            //проверка длинны массива
-        int i;
-        int a = 0;
-        for (i = 0; i < strings.length; i++) {
-            for (int j = 0; j < strings[i].length; j++) {
-                a++;
+    static void arrayCheck(String[][] strings) {            //проверка длинны массива
+        if (strings.length != 4) {
+            throw new MyArraySizeException("Количество строк в массиве не равно 4");
+        }
+        for (int i = 0; i < strings.length; i++) {
+            if (strings[i].length != 4) {
+                throw new MyArraySizeException("Количество строк в массиве не равно 4");
             }
         }
-        return i == 4 && a == 16;
     }
 
     static int sum(String[][] strings) {
+        arrayCheck(strings);                                        //сначала проверяем длинну массива
         int sum = 0;
         for (int i = 0; i < strings.length; i++) {
             for (int j = 0; j < strings[i].length; j++) {
@@ -45,8 +36,7 @@ public class Main {
                     int o = convertion(strings[i][j]);
                     sum += o;
                 } catch (NumberFormatException e) {
-                    System.out.println("В ячейке массива strings " + i + " под индексом: " + j + " неверный формат данных");
-                    throw new MyArrayDataException();
+                    throw new MyArrayDataException("В ячейке массива strings " + i + " под индексом: " + j + " неверный формат данных");
                 }
             }
         }
