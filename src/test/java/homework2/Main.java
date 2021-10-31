@@ -8,15 +8,6 @@ public class Main {
         String[][] strings = new String[4][4];
 
 
-        for (int i = 0; i < strings.length; i++) {              // заполняем массив
-            for (int j = 0; j < strings[i].length; j++) {
-                strings[i][j] = j + "";
-            }
-        }
-        strings [1][1] = "s";
-        System.out.println(sum(strings));
-
-
         if (!arrayCheck(strings)) {                             //Если длинна массива не верна то инициализируем исключение
             try {
                 throw new MyArraySizeException();
@@ -24,6 +15,14 @@ public class Main {
                 System.out.println("Некорректная длинна массива");
             }
         }
+
+
+        for (int i = 0; i < strings.length; i++) {              // заполняем массив
+            for (int j = 0; j < strings[i].length; j++) {
+                strings[i][j] = j + "";
+            }
+        }
+        sum(strings);
     }
 
 
