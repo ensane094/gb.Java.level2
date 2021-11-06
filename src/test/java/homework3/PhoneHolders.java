@@ -2,7 +2,7 @@ package homework3;
 
 import java.util.Objects;
 
-public class PhoneHolders implements Comparable {
+public class PhoneHolders {
 private String  name;
 private int phone;
     public PhoneHolders(){}
@@ -19,14 +19,7 @@ private int phone;
         return phone;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        PhoneHolders holders = (PhoneHolders) o;
-        if (this.name.equals(((PhoneHolders) o).getName())){
-            return 0;
-        }
-        return -1;
-    }
+
 
     @Override
     public String toString() {
@@ -42,10 +35,5 @@ private int phone;
         if (o == null || getClass() != o.getClass()) return false;
         PhoneHolders holders = (PhoneHolders) o;
         return name.equals(holders.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
     }
 }
