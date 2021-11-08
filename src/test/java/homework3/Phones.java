@@ -1,26 +1,23 @@
 package homework3;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class Phones {
-   ArrayList<PhoneHolders> holders = new ArrayList<PhoneHolders>();
+    private final Map<String, Set<Integer>> phoneBook;
 
-   public void add(String name, int phone) {
-      holders.add(new PhoneHolders(name, phone));
-   }
 
-   public void get(String name) {
-      for (int i = 0; i < this.holders.size(); i++) {
-         if (this.holders.get(i).getName().equals(name)) {
-            System.out.println(this.holders.get(i).getName() + ": " + this.holders.get(i).getPhone());
-         }
-      }
-   }
+    public Phones() {
+        phoneBook = new HashMap<>();                          // при создании объекта создаётся HashMap
+    }
+    public void add(String name, int number) {
+        phoneBook.putIfAbsent(name, new HashSet<>());        //если отсутствует ключ с таким именем - добавляем его
+        phoneBook.get(name).add(number);                     //если есть, добавляем ему номер
+    }
 
-   @Override
-   public String toString() {
-      return "Phones{" +
-              "holders=" + holders +
-              '}';
-   }
+    public Set<Integer> get(String name) {
+        return phoneBook.get(name);
+    }
 }

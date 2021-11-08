@@ -1,31 +1,39 @@
 package homework3;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
         Phones phones = new Phones();
-        phones.add("Малиновский", 448037);
-        phones.add("Прохоренко", 334411);
-        phones.add("Прохоренко", 3098211);
-        phones.add("Катафалк", 208411);
-        phones.add("Катафалк", 3098721);
-        phones.add("Герасимук", 3996681);
-        phones.add("Торрето", 6564311);
-        phones.add("Сопрано", 4324441);
-        phones.get("Прохоренко");
+        phones.add("Соколов",448000);
+        phones.add("Соколов",448330);
+        phones.add("Соколов",511100);
+        phones.add("Торетто",4434321);
+        phones.add("Криптман",150991);
+        phones.add("Астарта",652330);
+        System.out.println(phones.get("Соколов"));
+
+        firstTask();
     }
 
     static void firstTask() {
-        String[] strings = {"Альфарий", "Омегон", "Робокоп",
-                "Робоцып", "Альфарий", "Роджер",
-                "Шредер", "Бонифаций", "Джафар",
-                "Шархан", "Корбен", "Грека",
-                "Бонифаций", "Робокоп"};
-        Set<String> set = new HashSet<>(List.of(strings));
-        System.out.println(set);
-        System.out.println("Уникальных значений: " + set.size());
+        String[] words = {"Рафаэль", "Донателло", "Том", "Джерри", "Донателло", "Том", "Джерри"};
+        Map<String, Integer> wordsMap = countWords(words);
+        System.out.println(wordsMap);
+    }
+
+    static Map<String, Integer> countWords(String[] strings) {
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String word : strings) {
+            map.putIfAbsent(word, 0);
+            map.compute(word, (k, v) -> v += 1);
+            /**
+             *Мне помогли с заданием. Получается, создаём коллекцию со словами и каждому слову добавляем счётчик
+             * Если элемент коллекции null то записываем в него слово и даём счётчик
+             * Затем если ключ сходится со словом то ++
+             */
+        }
+        return map;
     }
 }
