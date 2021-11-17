@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
-        Phones phones = new Phones();
+           Phones phones = new Phones();
         phones.add("Соколов",448000);
         phones.add("Соколов",448330);
         phones.add("Соколов",511100);
@@ -15,7 +15,8 @@ public class App {
         System.out.println(phones.get("Соколов"));
 
         firstTask();
-    }
+
+}
 
     static void firstTask() {
         String[] words = {"Рафаэль", "Донателло", "Том", "Джерри", "Донателло", "Том", "Джерри"};
