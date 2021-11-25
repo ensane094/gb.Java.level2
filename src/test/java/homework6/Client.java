@@ -35,8 +35,7 @@ public class Client {
                 try {
                     while (true) {
                         String clientMsg = scanner.nextLine();
-                        clientMsg.trim();
-                            output.writeUTF("Client: " + clientMsg);
+                        output.writeUTF("Client: " + clientMsg);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
