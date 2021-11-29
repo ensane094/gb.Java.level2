@@ -23,20 +23,7 @@ public class Server {
             System.out.println("Добро пожаловать ");
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-            new Thread(new Runnable() {                     //отправляющий поток
-                @Override
-                public void run() {
-                    try {
-                        while (true) {
-                            String clientMsg = scanner.nextLine();
-                            out.writeUTF("Server: " + clientMsg);
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }).start();
-            new Thread(new Runnable() {                   //принимающий поток
+            new Thread(new Runnable() {                                         //поток принимающий данные
                 @Override
                 public void run() {
                     String serverMsg;
@@ -50,6 +37,12 @@ public class Server {
                     }
                 }
             }).start();
+            while (true) {
+                String clientMsg = scanner.nextLine();
+                out.writeUTF("Server: " + clientMsg);
+            }
+
+
         }
     }
 }

@@ -29,19 +29,7 @@ public class Client {
         inputStream = new DataInputStream(socket.getInputStream());
         output = new DataOutputStream(socket.getOutputStream());
         Scanner scanner = new Scanner(System.in);
-        new Thread(new Runnable() {                                         //поток отправляющий данные
-            @Override
-            public void run() {
-                try {
-                    while (true) {
-                        String clientMsg = scanner.nextLine();
-                        output.writeUTF("Client: " + clientMsg);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+
         new Thread(new Runnable() {                                         //поток принимающий данные
             @Override
             public void run() {
@@ -49,17 +37,25 @@ public class Client {
                 try {
                     while (true) {
                         serverMsg = inputStream.readUTF();
-                            System.out.println(serverMsg);
+                        System.out.println(serverMsg);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
+        while (true) {
+            String clientMsg = scanner.nextLine();
+            if(clientMsg.equals("/end")){
+                closeConnection();
+            }
+            output.writeUTF("Client: " + clientMsg);
+        }
+
     }
 
     public void closeConnection() {
-        try {
+        try {                                       //Почему-то output.close идея не даёт сделать
             inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
